@@ -1,0 +1,73 @@
+/**
+ * (c) 2017 Jáchym Koudela
+ * 
+ */
+
+
+var touchSlide = require('./touchslide/jk-touch-slide.js');
+
+var j$ = function (selector, index){
+
+    this.selector = selector;
+    this.index = index;
+
+    if(typeof index != -1){
+        this.element = document.querySelectorAll(this.selector)[this.index];
+    } else {
+        this.element = document.querySelectorAll(this.selector);
+    }
+
+    this.consoleElement = function(){
+        console.log(this.element);
+    }
+
+    this.attr = function(name, value){
+        if(!value) return this.element.getAttribute('name');
+        this.element.setAttribute(name, value);
+        return this;
+    }
+
+    this.on = function(type, callback){
+        var i;
+        var el = this.element;
+        if(typeof index != -1){
+            if(el == null || typeof(el) === 'undefined') return;
+            if (el.addEventListener) {
+                el.addEventListener(type, callback, false);
+            } else if (el[i].attachEvent) {
+                el.attachEvent("on" + type, callback);
+            } else {
+                el["on"+type] = callback;
+            }
+        } else {
+            for(i=0; i < el.length; i++){
+                if(el[i] == null || typeof(el[i]) === 'undefined') return;
+                if (el[i].addEventListener) {
+                    el[i].addEventListener(type, callback, false);
+                } else if (el[i].attachEvent) {
+                    el[i].attachEvent("on" + type, callback);
+                } else {
+                    el[i]["on"+type] = callback;
+                }
+            }
+        }
+    }
+
+    return this;
+};
+
+var jk = function(selector, index){
+    return new j$(selector, index);
+};
+
+j$.prototype.touchSlide = touchSlide.fn;
+
+            jk('.wrapper', 0).on('touchmove', function(e){
+                
+            })
+            
+            jk('.wrapper', 0).touchSlide();
+//            console.log(jk('li').name());
+//jk('li').attr('prd','prdel');
+
+
