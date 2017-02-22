@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <script type="text/javascript" src="jquery-3.1.1.js"></script>
+  </head>
+    
+  <body>    
+      <div f-selection>
+          <button>Default value</button>
+          <div dropdown>
+              <ul>
+                  <li class="test">
+                      option_1
+                  </li>
+                  <li class="">
+                      option_2
+                  </li>
+                  <li class="">
+                      option_3
+                  </li>
+                  <li class="">
+                      option_4
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </body>
+    <script>
+        
+        
+            var j$ = function (selector, index){
+
+    
+
+                this.selector = selector;
+                this.index = index;
+
+                if(index){
+                    this.element = document.querySelectorAll(this.selector)[this.index];
+                } else {
+                    this.element = document.querySelectorAll(this.selector);
+                }
+
+
+
+
+                this.consoleElement = function(){
+                    console.log(this.element);
+                }
+
+                this.attr = function(name, value){
+                    if(!value) return self.element.getAttribute('name');
+                    self.element.setAttribute(name, value);
+                    return self;
+                }
+
+                this.on = function(type, callback){
+                    var i;
+                    var el = this.element;
+                    if(index){
+                        if(el == null || typeof(el) === 'undefined') return;
+                        if (el.addEventListener) {
+                            el.addEventListener(type, callback, false);
+                        } else if (el[i].attachEvent) {
+                            el.attachEvent("on" + type, callback);
+                        } else {
+                            el["on"+type] = callback;
+                        }
+                    } else {
+                        for(i=0; i < el.length; i++){
+                            if(el[i] == null || typeof(el[i]) === 'undefined') return;
+                            if (el[i].addEventListener) {
+                                el[i].addEventListener(type, callback, false);
+                            } else if (el[i].attachEvent) {
+                                el[i].attachEvent("on" + type, callback);
+                            } else {
+                                el[i]["on"+type] = callback;
+                            }
+                        }
+                    }
+                }
+
+                return this;
+            }
+            
+            var jk = function(selector, index){
+                return new j$(selector, index);
+            }
+            
+            jk.prototype.name = 'jmenuji se Igor Hnizdecko';
+
+//            $('li').on('click', function(){
+//                console.log($('li'));
+//            })
+            console.log(jk('li').name);
+            
+        
+            
+        
+
+      </script>
+</html>  
