@@ -66,8 +66,7 @@ j$.prototype.touchSlide = touchSlide.fn;
                 
             })
             
-            jk('.wrapper', 0).touchSlide();
-//            console.log(jk('li').name());
-//jk('li').attr('prd','prdel');
+            jk('.slide-wrapper', 0).touchSlide();
+
 
 
