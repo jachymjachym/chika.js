@@ -44,12 +44,6 @@ var touchSlide = {
             console.log('last:'+lastX);
             console.log('curr:'+currentX);
             
-//            console.log('trans:'+ touches.translate);
-//            
-//            console.log('curr:'+ currentX);
-//            console.log('last:'+ lastX);
-//            var move = e.touches[0].clientX;
-            
         }
         
         target.addEventListener('touchstart', function(e){
