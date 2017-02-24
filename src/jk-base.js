@@ -3,15 +3,17 @@
  * 
  */
 
+var requirements = {
+    touchSlide: require('./touchslide/jk-touch-slide.js')
+}
 
-var touchSlide = require('./touchslide/jk-touch-slide.js');
 
 var j$ = function (selector, index){
 
     this.selector = selector;
     this.index = index;
 
-    if(typeof index != -1){
+    if(typeof index != 'undefined'){
         this.element = document.querySelectorAll(this.selector)[this.index];
     } else {
         this.element = document.querySelectorAll(this.selector);
@@ -60,13 +62,16 @@ var jk = function(selector, index){
     return new j$(selector, index);
 };
 
-j$.prototype.touchSlide = touchSlide.fn;
 
-            jk('.wrapper', 0).on('touchmove', function(e){
-                
-            })
-            
-            jk('.slide-wrapper', 0).touchSlide();
+for (var property in requirements) {
+    if (requirements.hasOwnProperty(property)) {
+        j$.prototype[property] = requirements[property].fn;
+    }
+    
+}
+
+module.exports = jk;
+
 
 
 

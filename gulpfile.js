@@ -19,7 +19,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('browserify', function() {
-    return browserify({ entries: ['src/jk-base.js'] })
+    return browserify({ entries: ['src/main.js'] })
         .bundle()
         .pipe(source('jk.lib.js'))
         .pipe(gulp.dest('build'));
