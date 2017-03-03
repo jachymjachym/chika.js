@@ -1,9 +1,9 @@
 
     
-    (function(){
+    (function(window, target){
         
         
-        console.log(window.chika);
+        console.log(target);
         
         
 //        var elem = target.children[0];
@@ -99,7 +99,7 @@
 //        });
         
         
-    })();
+    })(window, myApp.controller('myController', ['touchslide']));
 
 
 

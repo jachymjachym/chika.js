@@ -15,7 +15,7 @@
             
             this.controller = function(contName, mods){
                 var elem = this.element.querySelectorAll('[chkController="' + contName +'"]');
-                var target = Array.prototype.slice.call(target);
+                var target = Array.prototype.slice.call(elem);
                 return target;
             };
             
