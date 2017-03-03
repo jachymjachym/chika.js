@@ -37,8 +37,8 @@
         }
     </style>
     
-  <body>    
-      <div f-selection>
+  <body chkApp='myApp'>    
+      <div chkController='myController'>
           <button>Default value</button>
           <div dropdown>
               <ul>
@@ -57,7 +57,7 @@
               </ul>
           </div>
       </div>
-      <div class="slide-wrapper">
+      <div class="slide-wrapper" chkController='myController'>
           <div class="item-wrapper">
               <div class='item'></div>
               <div class='item'></div>
@@ -74,7 +74,9 @@
           </div>
       </div>
       
-      <script type="text/javascript" src="build/jk.lib.js"></script>
+      <script type="text/javascript" src="src/jk-base.js"></script>
+      <script type="text/javascript" src="src/touchslide/jk-touch-slide.js"></script>
+      <script type="text/javascript" src="src/main.js"></script>
   </body>
     
 </html>  

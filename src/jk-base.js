@@ -3,21 +3,34 @@
  * 
  */
 
-var promenna = (function(window, document){
-    console.log('neco');
-    window.addEventListener('click', function(){
-        alert('klikam');
-    });
-    window = this;
-    this.obj1 = {
-        obj2: function(hoes){
-            console.log(hoes);
-        }
-    }
+(function(window){
     
-})(window, document);
+    
+    window.chika = {
+        
+        module: function(name){
+            
+            this.name = name;
+            this.element = document.querySelector('[chkApp="' + name +'"]');
+            
+            this.controller = function(contName, mods){
+                var elem = this.element.querySelectorAll('[chkController="' + contName +'"]');
+                var target = Array.prototype.slice.call(target);
+                return target;
+            };
+            
+            
+            
+            return this;
+            
+        }
+        
+    };
+    
+    
+    
+})(window);
 
-module.exports = promenna;
 
 
 
