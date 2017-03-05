@@ -1,9 +1,9 @@
 
     
-    (function(window, target){
+    var touchslide = function(options){
         
         
-        console.log(target);
+        console.log(options);
         
         
 //        var elem = target.children[0];
@@ -99,7 +99,7 @@
 //        });
         
         
-    })(window, myApp.controller('myController', ['touchslide']));
+    };
 
 
 

@@ -13,9 +13,23 @@
             this.name = name;
             this.element = document.querySelector('[chkApp="' + name +'"]');
             
+            this.hasProperty = function(obj, key){
+                return obj.hasOwnProperty(key);
+            };
+            
             this.controller = function(contName, mods){
                 var elem = this.element.querySelectorAll('[chkController="' + contName +'"]');
                 var target = Array.prototype.slice.call(elem);
+                
+//                console.log(this.hasProperty(mods, 'touchslide'));
+                
+                switch(true){
+                    case this.hasProperty(mods, 'touchslide'):
+                        touchslide('options');
+                    break;
+                    
+                }
+                
                 return target;
             };
             
