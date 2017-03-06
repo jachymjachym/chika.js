@@ -11,8 +11,8 @@ First we need to load `chika-base.js` to our html file. It is a core of chika.js
 than we can load our peace of code, `main.js` for example
 
 Lets write some code:
-1. Step 1 - choose a scope
-2. Step 2 - call a module, which defines our scope where we can put our controllers
+Step 1 - choose a scope  
+Step 2 - call a module, which defines our scope where we can put our controllers
 
 ```html
 <!DOCTYPE HTML>
