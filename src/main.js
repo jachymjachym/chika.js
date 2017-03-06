@@ -1,17 +1,42 @@
-var myApp = chika.module('myApp');
+var myModule = chika.module('myApp');
 
-//chika.controller('myController', ['touchSlide']);
+var myControllerMods = {
+    custom: {
+        fn: function(target, options){
+            
+        },
+        options: {
+            opt1: 'opt1',
+            opt2: 'opt2'
+        }
+    },
+    touchslide: {}
+    
+};
+    
+var progressLoadMods = {
+    
+    progressBar: {
+        options: {
+            startValue: 10,
+            endValue: 100,
+            speed: 40,
+            frameValue: 3,
+            transitionFrame: 0.1,
+            transitionEnd: 1
+        }
+    }
+    
+}
 
-myApp.controller('myController', {touchslide});
 
-//console.log(myApp.controller('myController'));
 
-//var hovna = {
-//    hovno1: 'prujem',
-//    hovno2: 'sracka',
-//}
 
-//console.log(chika.hasProperty(hovna, 'hovno1'));
+myModule.controller('myController', myControllerMods);
+
+myModule.controller('loadProgress', progressLoadMods);
+
+
 
 
 

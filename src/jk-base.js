@@ -11,32 +11,51 @@
         module: function(name){
             
             this.name = name;
-            this.element = document.querySelector('[chkApp="' + name +'"]');
+            this.element = document.querySelector('[cModule="' + name +'"]');
             
             this.hasProperty = function(obj, key){
                 return obj.hasOwnProperty(key);
             };
             
             this.controller = function(contName, mods){
-                var elem = this.element.querySelectorAll('[chkController="' + contName +'"]');
+                var elem = this.element.querySelectorAll('[cController="' + contName +'"]');
                 var target = Array.prototype.slice.call(elem);
+
                 
-//                console.log(this.hasProperty(mods, 'touchslide'));
+                if(this.hasProperty(mods, 'custom')){
+                    target.forEach(function(el, index, arr){
+                        mods.custom.fn(el, mods.custom.options);
+                    });
+                }
                 
-                switch(true){
-                    case this.hasProperty(mods, 'touchslide'):
-                        touchslide('options');
-                    break;
-                    
+                if(this.hasProperty(mods, 'touchslide')){
+                    target.forEach(function(el, index, arr){
+                        touchslide(el, mods.touchslide.options);
+                    });
+                }
+                
+                if(this.hasProperty(mods, 'progressBar')){
+                    target.forEach(function(el, index, arr){
+                        progressBar(el, mods.progressBar.options);
+                    });
                 }
                 
                 return target;
             };
             
-            
-            
             return this;
             
+        },
+        
+        transitionPolyfill: function(el, css, time, easing){
+            
+            var easing = easing || 'linear';
+            
+            el.style.transition = css + ' ' + time + 's ' + easing;
+            el.style.WebkitTransition = css + ' ' + time + 's ' + easing;
+            el.style.MozTransition = css + ' ' + time + 's ' + easing;
+            el.style.msTransition = css + ' ' + time + 's ' + easing;
+            el.style.OTransition = css + ' ' + time + 's ' + easing;
         }
         
     };

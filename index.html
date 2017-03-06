@@ -35,10 +35,26 @@
         .item:last-child {
             background: pink;
         }
+        
+        .outer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+        .inner {
+            background: blue;
+            width: 0;
+            height: 100%;
+        }
     </style>
     
-  <body chkApp='myApp'>    
-      <div chkController='myController'>
+  <body cModule='myApp'>  
+      <div class="outer" cController='loadProgress'>
+            <div class="inner"></div>
+      </div>
+      <div>
           <button>Default value</button>
           <div dropdown>
               <ul>
@@ -57,7 +73,7 @@
               </ul>
           </div>
       </div>
-      <div class="slide-wrapper" chkController='myController'>
+      <div class="slide-wrapper" cController='myController'>
           <div class="item-wrapper">
               <div class='item'></div>
               <div class='item'></div>
@@ -65,7 +81,7 @@
               <div class='item'></div>
           </div>
       </div>
-      <div class="slide-wrapper">
+      <div class="slide-wrapper" cController='myController'>
           <div class="item-wrapper">
               <div class='item'></div>
               <div class='item'></div>
@@ -76,6 +92,7 @@
       
       <script type="text/javascript" src="src/jk-base.js"></script>
       <script type="text/javascript" src="src/touchslide/jk-touch-slide.js"></script>
+      <script type="text/javascript" src="src/progressbar/jk-progress-bar.js"></script>
       <script type="text/javascript" src="src/main.js"></script>
   </body>
     
