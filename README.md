@@ -1,1 +1,1 @@
-# jk.js
+# chika.js
