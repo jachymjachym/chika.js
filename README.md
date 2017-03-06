@@ -10,7 +10,7 @@ First we need to load `chika-base.js` to our html file. It is a core of chika.js
 ```
 than we can load our peace of code, `main.js` for example
 
-Lets write some code:
+Lets write some code:  
 Step 1 - choose a scope  
 Step 2 - call a module, which defines our scope where we can put our controllers
 
