@@ -4,6 +4,11 @@ var myControllerMods = {
     custom: {
         fn: function(target, options){
             
+            target.addEventListener('click', function(){
+                console.log(target);
+                console.log(options);
+            });
+            
         },
         options: {
             opt1: 'opt1',
@@ -29,12 +34,26 @@ var progressLoadMods = {
     
 }
 
+var anim = {
+    
+    type: 'transition',
+    css: 'opacity',
+    value: 0,
+//    unit: 'px'
+    
+}
+
 
 
 
 myModule.controller('myController', myControllerMods);
 
 myModule.controller('loadProgress', progressLoadMods);
+
+
+document.getElementById('btn').addEventListener('click', function(){
+    myModule.animation('move', anim);
+});
 
 
 
