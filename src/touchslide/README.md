@@ -2,7 +2,7 @@
 
 Responsive slider for touch devices
 
-##html
+## html
 first we need to declare our target wrapper
 
 so again, we need to choose our module scope `<div class='container' cModule='myModule'>`  
@@ -32,7 +32,7 @@ and controller inside `<div class="slide-wrapper" cController='myController'>`
     
 </html>  
 ```
-##javascript
+## javascript
 than we call our module `var myModule = chika.module('myModule')`,  
 define object with modes for example `myControllerModes` and object property `touchslide` with options (optional).  
 There are 2 options:  
