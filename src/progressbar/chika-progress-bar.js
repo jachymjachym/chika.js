@@ -29,10 +29,18 @@ var progressBar = function(target, options){
                     target.style.display = 'none';
                 }, 500);
             }, transitionEnd*1000);
-        } else {
+        } else if(document.readyState === 'interactive'){
+            if(startValue < 50){
+                    startValue += frame;
+                    inner.style.width = startValue + '%';
+                    chika.transitionPolyfill(inner, 'width', transitionFrame);
+                } else {
+                    clearInterval(int);
+                }
             
+        } else {
             function frame(){
-                if(startValue < 70){
+                if(startValue < 20){
                     startValue += frame;
                     inner.style.width = startValue + '%';
                     chika.transitionPolyfill(inner, 'width', transitionFrame);

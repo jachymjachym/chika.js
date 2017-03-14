@@ -1,6 +1,6 @@
 var myModule = chika.module('myApp');
 
-var myControllerMods = {
+var myControllerModes = {
     custom: {
         fn: function(target, options){
             
@@ -15,11 +15,16 @@ var myControllerMods = {
             opt2: 'opt2'
         }
     },
-    touchslide: {}
+    touchslide: {
+        options: {
+            itemsInWindow: 2,
+            threshold: 420
+        }
+    }
     
 };
     
-var progressLoadMods = {
+var progressLoadModes = {
     
     progressBar: {
         options: {
@@ -28,7 +33,7 @@ var progressLoadMods = {
             speed: 40,
             frameValue: 3,
             transitionFrame: 0.1,
-            transitionEnd: 1
+            transitionEnd: 0.3
         }
     }
     
@@ -46,9 +51,9 @@ var anim = {
 
 
 
-myModule.controller('myController', myControllerMods);
+myModule.controller('myController', myControllerModes);
 
-myModule.controller('loadProgress', progressLoadMods);
+myModule.controller('loadProgress', progressLoadModes);
 
 
 document.getElementById('btn').addEventListener('click', function(){

@@ -2,13 +2,38 @@
     
     var touchslide = function(target, options){
         
+        
         var elem = target.children[0];
-        var w = elem.children[0].clientWidth;
         var count = elem.children.length;
-        var fullW = w * count;
-        var unit = fullW / count;
+        
+        
+        if(options && options.threshold){
+            switch(window.innerWidth > options.threshold){
+                case true:
+                    var w = options.itemsInWindow ? target.clientWidth/options.itemsInWindow : target.clientWidth;
+                    var fullW = w * count;
+                    var countByUnit = options.itemsInWindow ? elem.children.length/options.itemsInWindow : elem.children.length;
+                    var unit = options.itemsInWindow ? fullW / (count/options.itemsInWindow) : fullW / count;
+                    break;
+                case false:
+                    var w = target.clientWidth;
+                    var fullW = w * count;
+                    var countByUnit = elem.children.length;
+                    var unit = fullW / count;
+            }
+        } else {
+            var w = options.itemsInWindow ? target.clientWidth/options.itemsInWindow : target.clientWidth;
+            var fullW = w * count;
+            var countByUnit = options.itemsInWindow ? elem.children.length/options.itemsInWindow : elem.children.length;
+            var unit = options.itemsInWindow ? fullW / (count/options.itemsInWindow) : fullW / count;
+        }
         
         elem.style.width = fullW + 'px';
+        
+        for(var i=0; i < elem.children.length; i++){
+            elem.children[i].style.width = w + 'px';
+        }
+        
         
         var touches = {
             touchstart: {x: 0, y: 0},
@@ -68,7 +93,7 @@
                     
                     var array = [];
                     var number = touches.translate;
-                    for(var i=0; i < count; i++){
+                    for(var i=0; i < countByUnit; i++){
                         array.push(-unit*i);
                     }
                     
@@ -94,8 +119,13 @@
             handler(e);
         });
         
+        window.addEventListener('resize', function(){
+            elem.style.transform = 'translateX(0px)';
+        });
+        
         
     };
+
 
 
 

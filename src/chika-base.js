@@ -17,26 +17,32 @@
                 return obj.hasOwnProperty(key);
             };
             
-            this.controller = function(contName, mods){
+            this.controller = function(contName, modes){
                 var elem = this.element.querySelectorAll('[cController="' + contName +'"]');
                 var target = Array.prototype.slice.call(elem);
 
                 
-                if(this.hasProperty(mods, 'custom')){
+                if(this.hasProperty(modes, 'custom')){
                     target.forEach(function(el, index, arr){
-                        mods.custom.fn(el, mods.custom.options);
+                        modes.custom.fn(el, modes.custom.options);
                     });
                 }
                 
-                if(this.hasProperty(mods, 'touchslide')){
-                    target.forEach(function(el, index, arr){
-                        touchslide(el, mods.touchslide.options);
-                    });
+                if(this.hasProperty(modes, 'touchslide')){
+                    if(chika.isMobile()){
+                        target.forEach(function(el, index, arr){
+                            window.addEventListener('resize', function(){
+                                touchslide(el, modes.touchslide.options);
+                            }, false);
+
+                            touchslide(el, modes.touchslide.options);
+                        });
+                    }
                 }
                 
-                if(this.hasProperty(mods, 'progressBar')){
+                if(this.hasProperty(modes, 'progressBar')){
                     target.forEach(function(el, index, arr){
-                        progressBar(el, mods.progressBar.options);
+                        progressBar(el, modes.progressBar.options);
                     });
                 }
                 
@@ -81,6 +87,10 @@
                         
                 });
                 
+            };
+            
+            this.isMobile = function(){
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             };
             
             return this;
