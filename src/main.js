@@ -56,10 +56,6 @@ myModule.controller('myController', myControllerModes);
 myModule.controller('loadProgress', progressLoadModes);
 
 
-document.getElementById('btn').addEventListener('click', function(){
-    myModule.animation('move', anim);
-});
-
 
 
 
