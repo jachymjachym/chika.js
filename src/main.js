@@ -61,10 +61,6 @@ document.getElementById('btn').addEventListener('click', function(){
 });
 
 
-var hovenko = 'hovenko';
-
-console.log(hovenko.endsWith('venko'));
-
 
 
 
